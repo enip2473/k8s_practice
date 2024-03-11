@@ -1,16 +1,20 @@
-0. 
-
-1. Build your Docker image: Open a terminal, navigate to the directory containing your Dockerfile, and run the following command to build your Docker image. Replace yourapp with the name you wish to give your Docker image.
+First, start your kubectl
 
 ```
-docker build -t yourapp .
+cd k8s
+kubectl apply -f fastapi-deployment.yaml
+kubectl apply -f fastapi-service.yaml
+kubectl apply -f fastapi-ingress.yaml
 ```
 
-
-2. Run your Docker container: After the build completes, you can run your FastAPI application inside a Docker container using:
-This command runs your application in a detached mode (-d), maps port 8000 of the container to port 8000 on your host (-p 8000:8000), and names the container yourapp-container.
+If no public address is given, you can use the command to test it locally:
 
 ```
-docker run -d --name yourapp-container -p 8000:8000 yourapp
+curl --resolve demo.localdev.me:8080:127.0.0.1 http://demo.localdev.me:8080/heartbeat
 ```
 
+It should return:
+
+```
+{"message": "Hello World"}
+```
