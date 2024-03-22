@@ -8,6 +8,7 @@ fastapi = "*"
 requests = "*"
 uvicorn = "*"
 python-dotenv = "*"
+python-multipart = "*"
 
 [dev-packages]
 
